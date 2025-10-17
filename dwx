@@ -1,0 +1,42 @@
+using Beplenx;
+using Beplenx.Hooking;
+using Beplenx.Hooking.Attributes;
+using Beplenx.Hooking.Enums;
+using Beplenx.Hooking.Managers;
+using Beplenx.Hooking.Patches;
+using Beplenx.Hooking.Utilities;
+using System;
+using UnityEngine;
+
+namespace VRChatHackClient
+{
+    public class HackClient : IBeplenxModule
+    {
+        public void OnLoad()
+        {
+            // Hook into the game's methods
+            HookManager.HookMethod<VRChatPlayer>("Update", HookType.After, UpdateHook);
+        }
+
+        private void UpdateHook(VRChatPlayer __instance)
+        {
+            // Example hack: Fly hack
+            if (Input.GetKey(KeyCode.Space))
+            {
+                __instance.transform.position += Vector3.up * 0.1f;
+            }
+
+            // Example hack: Speed hack
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                __instance.moveSpeed *= 2.0f;
+            }
+        }
+
+        public void OnUnload()
+        {
+            // Unhook methods when the client is unloaded
+            HookManager.UnhookMethod<VRChatPlayer>("Update", HookType.After, UpdateHook);
+        }
+    }
+}
