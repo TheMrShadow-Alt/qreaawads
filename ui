@@ -1,0 +1,36 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace VRChatHackClient
+{
+    public class HackClientUI : MonoBehaviour
+    {
+        public Toggle flyToggle;
+        public Slider speedSlider;
+
+        private void Start()
+        {
+            flyToggle.onValueChanged.AddListener(OnFlyToggleChanged);
+            speedSlider.onValueChanged.AddListener(OnSpeedSliderChanged);
+        }
+
+        private void OnFlyToggleChanged(bool isOn)
+        {
+            // Enable or disable fly hack
+            if (isOn)
+            {
+                // Enable fly hack
+            }
+            else
+            {
+                // Disable fly hack
+            }
+        }
+
+        private void OnSpeedSliderChanged(float value)
+        {
+            // Set speed hack value
+            // speedHackValue = value;
+        }
+    }
+}
