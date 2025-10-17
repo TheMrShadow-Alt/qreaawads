@@ -1,0 +1,14 @@
+using Beplenx;
+using Beplenx.Hooking.Managers;
+using UnityEngine;
+
+namespace VRChatHackClient
+{
+    public class HackClientLoader : MonoBehaviour
+    {
+        private void Start()
+        {
+            BeplenxModuleManager.LoadModule<HackClient>();
+        }
+    }
+}
